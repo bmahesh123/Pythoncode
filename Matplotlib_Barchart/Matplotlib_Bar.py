@@ -1,13 +1,21 @@
 import matplotlib.pyplot as plt
+from Matplotlib_Barchart.inputData import *
 
-class MatBarchart:
-    @staticmethod
-    def displaybarchart():
 
-        pl = ['Python', 'Java', 'HTML', 'SQL', 'Spring', '.Net']
-        popularity = [22.2, 18.6, 15.8, 14.2, 20.2, 12.7]
+class MatBarchart(object, MatBarchart_Data):
+
+    def displaybarchart(self):
+
+        data_obj = MatBarchart_Data()
+        data = data_obj.input_data_matplot_lib()
+
+        tuple_to_list = list(data)
+        pl = tuple_to_list[0]
+        pop = tuple_to_list[1]
+        print(pl)
+        print(pop)
         pl_pos = [i for i, _ in enumerate(pl)]
-        plt.bar(pl_pos, popularity, color=(0.4, 0.6, 0.8, 1.0), edgecolor='blue')
+        plt.bar(pl_pos, pop, color=(0.4, 0.6, 0.8, 1.0), edgecolor='blue')
 
         plt.xlabel("Programing Languages")
         plt.ylabel("Popularity")
@@ -22,4 +30,5 @@ class MatBarchart:
         plt.show()
 
 
+matbarchart_Data = MatBarchart_Data()
 MatBarchart.displaybarchart()
