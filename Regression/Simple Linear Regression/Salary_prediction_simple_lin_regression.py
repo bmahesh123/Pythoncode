@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 import pickle
+import matplotlib.pyplot as plt
 
 
 class Simple_Regression:
@@ -82,6 +83,22 @@ class Simple_Regression:
 
             accuracy_pkl = r2_score(y_pred_pkl, y_test_Data)
             print("Accuracy of test data using Pickle File: ", accuracy_pkl)
+
+            # Plotting Training set results
+            plt.scatter(x_train, y_train, color='yellow')
+            plt.plot(x_train, regression.predict(x_train), color='red')
+            plt.title('Predict salary based on experience(Training set)')
+            plt.xlabel('Experience - x Axis')
+            plt.ylabel('Salary- Y Axis')
+            plt.show()
+
+            # Plotting Test set results
+            plt.scatter(x_test, y_test, color='red')
+            plt.plot(x_train, regression.predict(x_train), color='blue')
+            plt.title('Predict salary based on experience(Predicated set/Test set)')
+            plt.xlabel('Experience - x Axis')
+            plt.ylabel('Salary- Y Axis')
+            plt.show()
 
     except FileNotFoundError:
         print("FileNotFoundError")
